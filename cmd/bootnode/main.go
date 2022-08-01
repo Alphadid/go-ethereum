@@ -23,7 +23,6 @@ import (
 	"fmt"
 	"net"
 	"os"
-
 	"github.com/ethereum/go-ethereum/cmd/utils"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/log"
@@ -49,10 +48,11 @@ func main() {
 		nodeKey *ecdsa.PrivateKey
 		err     error
 	)
-	flag.Parse()
 
 	glogger := log.NewGlogHandler(log.StreamHandler(os.Stderr, log.TerminalFormat(false)))
 	glogger.Verbosity(log.Lvl(*verbosity))
+	flag.Parse()
+	
 	glogger.Vmodule(*vmodule)
 	log.Root().SetHandler(glogger)
 
